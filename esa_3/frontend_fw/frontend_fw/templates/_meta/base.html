@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% block pagelang %} <html class="edge no-js" lang="de"> {% endblock %}
+<head>{% load core %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{% block metaDescription %}Prototyp Frontend Framework{% endblock %}" />
+    <meta name="author" content="{% block metaAuthor %}Jana Deutschlaender{% endblock %}" />
+
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon" />
+
+    <link href="static/css/fw_style.css" rel="stylesheet">
+
+    <noscript>
+        <link href="static/css/fw_noscript.css" rel="stylesheet">
+    </noscript>
+
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="static/js/fw_legacy.js"></script>
+    <![endif]-->
+
+    {% block headScript %}
+        <script type="text/javascript" src="static/js/fw_head.js"></script>
+    {% endblock %}
+
+
+</head>
+<body>
+
+{% block navMain %}
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">{% block navMainToggleBtn %}Toggle navigation{% endblock %}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{% block navMainPrjName %}Prototyp Frontend Framework{% endblock %}</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    {% block nav-home %}<li><a href="{% block nav-home-url %}index.html{% endblock %}">Start</a></li>{% endblock %}
+                    {% block nav-pages %}<li><a href="{% block nav-pages-url %}index_page.html{% endblock %}">HTML-Vorlagen</a></li>{% endblock %}
+                    {% block nav-screens %}<li><a href="{% block nav-screens-url %}index_screens.html{% endblock %}">Screens</a></li>{% endblock %}
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+{% endblock %}
+
+    {% block bodyScript %}
+        <script type="text/javascript" src="static/js/fw_body.js"></script>
+    {% endblock %}
+
+</body>
