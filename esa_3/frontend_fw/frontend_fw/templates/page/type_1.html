@@ -1,0 +1,9 @@
+{% extends "_meta/prj_base.html" %}
+{% block nav-1 %}<li class="active"><a><strong>Home</strong></a></li>{% endblock %}
+
+
+{% block content %}
+    {% include "_meta/blocks/prj/page_headline.html" with pageHeadline="Willkommen" %}
+    {% include "_meta/blocks/prj/intro.html" %}
+    {% include "_meta/blocks/prj/3xbox_teaser.html" with teaserHeading="News" %}
+{% endblock %}

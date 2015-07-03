@@ -1,5 +1,9 @@
 .DS_Store
 css/style.css
-node_modules/*
+*/node_modules/*
 *.pyc
 .idea
+*.TMP
+*.iml
+node_modules
+env

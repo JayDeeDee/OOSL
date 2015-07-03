@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% block pagelang %} <html class="edge no-js" lang="en"> {% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="{% block metaDescription %}Template Dummy{% endblock %}" />
+    <meta name="author" content="{% block metaAuthor %}Jana Deutschlaender{% endblock %}" />
+
+    <title>{% block proj-title-template %}template typ: {% endblock %} {% block proj-title-suffix %}project name{% endblock %}</title>
+    <link href="../static/css/style.css" rel="stylesheet" />
+
+    <noscript>
+        <link href=../static/css/noscript.css" rel="stylesheet" />
+    </noscript>
+
+    <!--[if lte IE 8]>
+      <script type="text/javascript" src="../static/js/legacy.js"></script>
+    <![endif]-->
+
+    {% block headScript %}
+        <script type="text/javascript" src="../static/js/head.js"></script>
+    {% endblock %}
+
+</head>
+<body role="document">
+{% block navMain %}
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Company</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% block nav-1 %}<li><a href="{% block nav-home-url %}type_0.html{% endblock %}">Home</a></li>{% endblock %}
+                {% block nav-2 %}<li><a href="{% block nav-pages-url %}type_2.html{% endblock %}">Menu item</a></li>{% endblock %}
+                {% block nav-3 %}<li><a href="{% block nav-screens-url %}type_4.html{% endblock %}">Menu item</a></li>{% endblock %}
+                {% block nav-4 %}<li><a href="{% block nav-export-proj-url %}#{% endblock %}">Menu item</a></li>{% endblock %}
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+{% endblock %}
+
+<div class="container theme-showcase" role="main">
+{% block content %}
+
+{% endblock %}
+</div>
+
+{% block footer %}
+    <div class="container">
+        <footer>
+            <p>© Company 2015</p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block bodyScript %}
+    <script type="text/javascript" src="../static/js/body.js"></script>
+{% endblock %}
+</body>
+</html>

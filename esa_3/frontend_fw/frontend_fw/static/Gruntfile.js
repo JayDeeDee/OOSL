@@ -13,7 +13,22 @@ module.exports = function (grunt) {
                 dest: 'js/head.js'
             },
             extras: {
-                src: ['script/module/_prj_body.js'],
+                src: [
+                    'script/lib/jquery-1.11.3.min.js',
+                    'script/lib/bootstrap/transition.js',
+                    'script/lib/bootstrap/alert.js',
+                    'script/lib/bootstrap/button.js',
+                    'script/lib/bootstrap/carousel.js',
+                    'script/lib/bootstrap/collapse.js',
+                    'script/lib/bootstrap/dropdown.js',
+                    'script/lib/bootstrap/modal.js',
+                    'script/lib/bootstrap/tooltip.js',
+                    'script/lib/bootstrap/popover.js',
+                    'script/lib/bootstrap/scrollspy.js',
+                    'script/lib/bootstrap/tab.js',
+                    'script/lib/bootstrap/affix.js',
+                    'script/module/_prj_body.js'
+                ],
                 dest: 'js/body.js'
             }
         },

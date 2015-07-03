@@ -17,6 +17,7 @@ module.exports = function (grunt) {
             },
             extras: {
                 src: [
+                    'script/lib/jquery-1.11.3.min.js',
                     'script/lib/bootstrap/transition.js',
                     'script/lib/bootstrap/alert.js',
                     'script/lib/bootstrap/button.js',
@@ -29,7 +30,6 @@ module.exports = function (grunt) {
                     'script/lib/bootstrap/scrollspy.js',
                     'script/lib/bootstrap/tab.js',
                     'script/lib/bootstrap/affix.js',
-                    'script/lib/jquery-1.11.3.min.js',
                     'script/module/_body.js',
                     'script/module/_wording.js',
                     'script/module/_eventDispatcher.js',

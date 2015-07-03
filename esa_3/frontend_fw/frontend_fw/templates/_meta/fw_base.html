@@ -10,18 +10,20 @@
 
     <link rel="icon" href="static/favicon.ico" type="image/x-icon" />
 
-    <link href="static/css/fw_style.css" rel="stylesheet">
+    <title>{% block proj-title-praefix %}Projektname{% endblock %} {% block proj-title-template %}Frontend Framework {% endblock %} </title>
+
+    <link href="{% block head-style %}static/css/fw_style.css{% endblock %}" rel="stylesheet" />
 
     <noscript>
-        <link href="static/css/fw_noscript.css" rel="stylesheet">
+        <link href="{% block head-style-noscript %}static/css/fw_noscript.css{% endblock %}" rel="stylesheet" />
     </noscript>
 
     <!--[if lte IE 8]>
-      <script type="text/javascript" src="static/js/fw_legacy.js"></script>
+      <script type="text/javascript" src="{% block head-script-legacy %}static/js/fw_legacy.js{% endblock %}"></script>
     <![endif]-->
 
     {% block headScript %}
-        <script type="text/javascript" src="static/js/fw_head.js"></script>
+        <script type="text/javascript" src="{% block head-script %}static/js/fw_head.js{% endblock %}"></script>
     {% endblock %}
 
 
@@ -32,27 +34,49 @@
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container">
             <div class="navbar-header">
+                {% block toggleNavBar %}
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">{% block navMainToggleBtn %}Toggle navigation{% endblock %}</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">{% block navMainPrjName %}Prototyp Frontend Framework{% endblock %}</a>
+                {% endblock %}
+                <a class="navbar-brand" href="/">{% block navMainPrjName %}Prototyp Frontend Framework{% endblock %}</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
+                {% block navBar %}
                 <ul class="nav navbar-nav">
                     {% block nav-home %}<li><a href="{% block nav-home-url %}index.html{% endblock %}">Start</a></li>{% endblock %}
-                    {% block nav-pages %}<li><a href="{% block nav-pages-url %}index_page.html{% endblock %}">HTML-Vorlagen</a></li>{% endblock %}
+                    {% block nav-pages %}<li><a href="{% block nav-pages-url %}index_page.html{% endblock %}">Vorlagen</a></li>{% endblock %}
                     {% block nav-screens %}<li><a href="{% block nav-screens-url %}index_screens.html{% endblock %}">Screens</a></li>{% endblock %}
+                    <!-- {% block nav-export-proj %}<li><a href="{% block nav-export-proj-url %}index_export.html{% endblock %}">Export</a></li>{% endblock %} -->
                 </ul>
+                {% endblock %}
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </nav><!-- /.navbar -->
 {% endblock %}
 
-    {% block bodyScript %}
-        <script type="text/javascript" src="static/js/fw_body.js"></script>
-    {% endblock %}
+<div class="container theme-showcase" role="main">
+{% block content %}
+
+{% endblock %}
+</div>
+
+{% block footer %}
+    <nav class="navbar navbar-inverse footer">
+        <div class="container">
+            <div class="navbar-header">
+
+            </div>
+
+        </div><!-- /.container -->
+    </nav>
+{% endblock %}
+
+{% block bodyScriptBlock %}
+    <script type="text/javascript" src="{% block body-script %}static/js/fw_body.js{% endblock %}"></script>
+{% endblock %}
 
 </body>

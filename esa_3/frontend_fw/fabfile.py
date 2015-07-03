@@ -1,8 +1,7 @@
 import os
-from util.buildpages import Buildpages
 
-from fabric.api import *
-import fabric.api as fabric_api
+#from fabric.api import *
+#import fabric.api as fabric_api
 
 app_name = 'frontend_fw'
 
@@ -17,6 +16,3 @@ def screenshot():
     my_path = os.path.dirname(os.path.realpath(__file__))
     print(my_path)
 
-
-def build_page():
-    #build_pages = Buildpages(app_name)

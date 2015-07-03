@@ -1,7 +1,6 @@
 # coding=utf-8
 # Django settings for frontend_fw project.
 import os
-import tempfile
 
 DEBUG = True
 PRODUCTION = True
@@ -16,9 +15,9 @@ APP_DIR = os.path.join(ROOT_DIR, 'frontend_fw')
 # for local usage only
 ON_SERVER = False
 if ON_SERVER:
-    print("Do Not Use This on a Server")
+    print("Do not use this framework on a server")
 else:
-    print("Local Dev System")
+    print("local dev system")
 print("Root Directory is configured at %s" % ROOT_DIR)
 
 
@@ -100,7 +99,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -132,10 +131,10 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -154,12 +153,11 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    # db 
-	'django.contrib.auth',
+    # db 'django.contrib.auth',
     # db 'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    #db 'django.contrib.sites',
-    'django.contrib.messages',
+    # 'django.contrib.sessions',
+    # db 'django.contrib.sites',
+    # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
     # Uncomment the next line to enable the admin:
@@ -168,16 +166,16 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
-SESSION_ENGINE = "django.contrib.sessions.backends.file"
-SESSION_FILE_PATH = os.path.join(tempfile.gettempdir(), 'frontend_fw-sessions')
+#SESSION_ENGINE = "django.contrib.sessions.backends.file"
+#SESSION_FILE_PATH = os.path.join(tempfile.gettempdir(), 'frontend_fw-sessions')
 
-try:
-    os.mkdir(SESSION_FILE_PATH)
-except (OSError, IOError):
-    pass
+# try:
+#    os.mkdir(SESSION_FILE_PATH)
+# except (OSError, IOError):
+#    pass
 
-here = lambda *x: os.path.join(os.path.dirname(
-    os.path.realpath(__file__)), *x)
+# here = lambda *x: os.path.join(os.path.dirname(
+#    os.path.realpath(__file__)), *x)
 
 
 # A sample logging configuration. The only tangible logging
