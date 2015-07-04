@@ -1,2 +1,63 @@
 {% extends "_meta/fw_subpage.html" %}
 
+{% block content %}
+    {% if page_list and page_list|length > 0  %}
+        {% include "_meta/blocks/fw/intro.html" with introTitle="Vorlagen" introText="" introHeader='' %}
+
+        {% if status_build  %}
+            <div role="alert" class="alert alert-info">
+                <p><a class="btn pull-right btn-primary" href="../index_page.html">Zurück</a></p>
+                <strong>Bundle Export</strong> {{ status_build }}
+                <span class="clearfix"></span>
+            </div>
+        {% else %}
+            {% if has_back_button %}
+                <p><a class="btn pull-right btn-primary" href="../index_page.html">Zurück</a></p>
+            {% endif %}
+        {% endif %}
+
+        {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="fertige Vorlagen" %}
+
+        {% for key, box in page_list.items %}
+            <div class="template-box template-box-{{ key }}">
+                {% if box.headline %}
+                    {% include "_meta/blocks/fw/page_headline3.html" with pageHeadline=box.headline %}
+                {% endif %}
+                {% if box.intro %}
+                    <p>{{ box.intro }}</p>
+                {% endif %}
+                {% if box.pages and box.pages|length > 0 %}
+                    <ul>
+                        {% for tpl, name in box.pages.items %}
+                            <li>{{ name }} <a class="btn btn-xs btn-info" href="{{ tpl }}">anschauen</a> </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        {% include "_meta/blocks/fw/intro.html" with introTitle="Vorlagen" introText="Es sind noch keine fertigen Vorlagen im Frontend vorhanden." introFooter='' %}
+    {% endif %}
+
+    {% if work_list and work_list|length > 0  %}
+        {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Vorlagen in Arbeit" %}
+        {% for key, box in work_list.items %}
+            <div class="template-box template-box-{{ key }}">
+                {% if box.headline %}
+                    {% include "_meta/blocks/fw/page_headline3.html" with pageHeadline=box.headline %}
+                {% endif %}
+                {% if box.intro %}
+                    <p>{{ box.intro }}</p>
+                {% endif %}
+                {% if box.pages and box.pages|length > 0 %}
+                    <ul>
+                        {% for tpl, name in box.pages.items %}
+                            <li>{{ name }} <a class="btn btn-xs btn-info" href="{{ tpl }}">anschauen</a> </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+

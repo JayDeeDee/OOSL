@@ -11,6 +11,7 @@ ROOT_DIR = os.path.abspath(
     os.path.dirname(os.path.dirname(__file__))
 )
 APP_DIR = os.path.join(ROOT_DIR, 'frontend_fw')
+EXP_DIR = os.path.join(APP_DIR, 'export')
 
 # for local usage only
 ON_SERVER = False
