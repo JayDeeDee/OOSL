@@ -15,8 +15,9 @@ Framework for developing frontend projects in IntelliJ Idea IDE:
 * Python 2.7
 * Pip
 * Node.js
-* npm
 * Virtualenv
+* npm
+
 
 ## Installation in IntelliJ Idea
 

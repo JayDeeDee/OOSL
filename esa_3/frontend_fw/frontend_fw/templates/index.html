@@ -1,2 +1,30 @@
 {% extends "_meta/fw_base.html" %}
 {% block nav-home %}<li class="active"><a><strong>Start</strong></a></li>{% endblock %}
+
+{% block content %}
+
+    {% include "_meta/blocks/fw/intro.html" with introTitle="Baukasten für Frontend Entwicklung" introText="" introHeader='' %}
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Idee" %}
+    <p>Frontend Entwickler sowie Composer einer Frontendabteilung sollen bei der schnellen Erstellung statischer HTML-Vorlagen unterstützt werden.</p>
+    <p>Die Abteilung setzt IntelliJ unter MacOS ein, einige der Entwickler kennen sich mit Datenbanken und serverseitiger Programmierung nicht aus, sollen aber trotzdem in der Lage sein, einige Anpassungen an dem Baukasten vorzunehmen</p>
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Funktionsumfangs" %}
+    <ul>
+    <li><a href="index_page.html">übersichtliche Darstellung des aktuellen Entwicklungstands</a>
+        <ul>
+            <li>in Arbeit</li>
+            <li>fertig gestellt</li>
+        </ul>
+    </li>
+    <li>Templatefunktionalität: Redundanzen vermeiden, templateübergreifende Seitenelemente als Includes ablegen, um Änderungen schneller umsetzen zu können</li>
+    <li>automatisch erzeugte, aber konfigurierbare Vorlagenlisten für den Templatestand</li>
+    <li><a href="/responsive/index.html?template=type_1.html">übersichtliche Möglichkeit, responsive Layouts zu testen</a></li>
+    <li>wahlweise automatisches oder manuelles Kompilieren von LESS-Dateien</li>
+    <li>wahlweise automatisches oder manuelles Konkatinieren von JS-Dateien</li>
+    <li>Export von minifizierten JS- und CSS-Dateien</li>
+    <li>Export von Entwicklungsständen mit der Möglichkeit, Vorlagen auszunehmen mit automatisch erzeugter Vorlagenliste</li>
+    <li>Export von einzelnen Templates ohne Vorlagenliste</li>
+    <li>gleichzeitige Erstellung von mehreren Screenshots eines Templates</li>
+    </ul>
+
+
+{% endblock %}

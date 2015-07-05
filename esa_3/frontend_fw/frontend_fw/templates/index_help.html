@@ -55,6 +55,7 @@
     <h3>Auslösen des Exports</h3>
     <p>Auf der Vorlagenübersicht befindet sich der Button <button class="btn btn-primary btn-lg">Bundle exportieren»</button></p>
     <p>Nach Auslösen des Buttons werden automatisch alle konfigurierten HTML-Vorlagen inklusive der statischen Dateien als statischs HTML im Ordner 'frontend_fw\export' abgelegt.</p>
+    <img src="static/imgfw/export2.png" alt="Screenshot: Export"/>
     <h3>Aufbau des Exports</h3>
     <p>Jeder Export erhält einen eigenen Ordner 'templates[Zeitstempel des Exports]'</p>
     <img src="static/imgfw/export.png" alt="Screenshot: Export"/>
@@ -75,4 +76,40 @@
     <p><strong>Vorsicht!</strong> BUILD_PAGE_EXCLUDED bezieht sich nur auf den Kopierprozess, nicht auf die Templateübersichtsseite</p>
     <p>Um die Templateübersicht so flexibel wie möglich zu gestalten (Mehrfachnennung einer Vorlage in mehreren Abschnitten, Nichterfassen einer exportierten Vorlage...) wurden die Export und Übersicht entkoppelt.
     Der Frontendentwickler muss selbst darauf achten, dass in der Übersicht keine in BUILD_PAGE_EXCLUDED aufgeführten Vorlagen verlinkt sind.</p>
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Einzelexport einer HTML-Vorlage" %}
+    <p>Jedes Template kann auch einzeln exportiert werden.</p>
+    <p>Einzelexports haben keine Konfiguration und werden ohne Templateübersichtsseite exportiert</p>
+    <h3>Auslösen des Exports</h3>
+    <p>Auf der Vorlagenübersicht befindet neben jeder Vorlage ein Export Link <a href="#" class="btn btn-xs btn-primary">Export</a></p>
+    <p>Nach Auslösen des Links wird das Template im Browser angezeigt und automatisch inklusive der statischen Dateien als statischs HTML im Ordner 'frontend_fw\export' abgelegt.</p>
+    <h3>Aufbau des Exports</h3>
+    <p>Jeder Export erhält einen eigenen Ordner 'templatename[Zeitstempel des Exports]'</p>
+    <img src="static/imgfw/export3.png" alt="Screenshot: Export"/>
+    <p>Die Ordnerstruktur ist die folgende:</p>
+    <ul>
+        <li><strong>page:</strong> enthält das Kundentemplate</li>
+        <li><strong>static:</strong> enthält alle statischen Dateien für das Kundenprojekt, eine templatespezifische Auswahl findet nicht statt</li>
+    </ul>
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Responsive Ansichten" %}
+    <h3>Anzeigen der Responsiven Ansichten</h3>
+    <p>Auf der Vorlagenübersicht befindet neben jeder Vorlage ein Link <a href="#" class="btn btn-xs btn-success">Responsive</a></p>
+    <p>Folgt man dem Link, kommt man zu einer Tabansicht von Viewport Varianten</p>
+    <img src="static/imgfw/responsive.png" alt="Screenshot: Responsive"/>
+    <h3>Konfiguration der Responsiven Ansichten</h3>
+    <p>Die Konfiguration erfolgt in 'frontend_fw\core\templatesettings.py'</p>
+    <ul>
+        <li><strong>IFRAME_LIST:</strong> beliebige Anzahl an Viewports konfigurierbar, Höhe, Breite und Benamung frei wählbar</li>
+    </ul>
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Automatisches Erstellen von Screenshots" %}
+    <p>Das Erstellen von Screenshots erfolgt über die IntelliJ Konsole mittels des Scripts 'frontend_fw\screens\screenshot.sh'</p>
+    <p>Dazu aktiviert man das virtual environment, wechselt in das 'screens' Verzeichnis und ruft das screenshot Skript mit den Argumenten Templatename und URL auf</p>
+    <h3>Größe, Benamung und Anzahl der Screenshots</h3>
+    <p>Es erstellt im screens Verzeichnis ganzseitige Screenshots in den Breiten 600, 768 und 320. Sind andere bzw. weitere Größen erwünscht, muss das Array in Zeile 3 des Scripts geändert werden.</p>
+    <p>Die erstellten Screenshots haben den Aufbau screenshot-templatename-'groesse.png</p>
+    <h3>Argumente</h3>
+    <p>Das Skript erwartet 2 Argumente: Templatename und die URL, unter der das Template aufgerufen werden soll</p>
+    <h3>typische Fehlerquelle</h3>
+    <p>Rechteproblem mit webkit2png.py bzw. screenshot.sh: beide müssen ausführbar sein</p>
+
+
 {% endblock %}
