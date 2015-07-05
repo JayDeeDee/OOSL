@@ -17,7 +17,7 @@
             {% if box.pages and box.pages|length > 0 %}
                 <ul>
                 {% for tpl, name in box.pages.items %}
-                    <li>{{ name }} <a class="btn btn-xs btn-info" href="page/{{ tpl }}">anschauen</a> <a class="btn btn-xs btn-primary" href="page/{{ tpl }}?build=make">Export</a> <a class="btn btn-xs btn-success" href="page/{{ tpl }}?build=screen">Screenshot</a></li>
+                    <li>{{ name }} <a class="btn btn-xs btn-info" href="page/{{ tpl }}">anschauen</a> <a class="btn btn-xs btn-primary" href="page/{{ tpl }}?make=build">Export</a> <a class="btn btn-xs btn-success" href="responsive/index.html?template={{ tpl }}">Responsive</a></li>
                 {% endfor %}
                 </ul>
             {% endif %}
@@ -40,7 +40,7 @@
                 {% if box.pages and box.pages|length > 0 %}
                     <ul>
                         {% for tpl, name in box.pages.items %}
-                            <li>{{ name }} <a class="btn btn-xs btn-info" href="page/{{ tpl }}">anschauen</a> <a class="btn btn-xs btn-primary" href="page/{{ tpl }}?build=make">Export</a> <a class="btn btn-xs btn-success" href="page/{{ tpl }}?build=screen">Screenshot</a></li>
+                            <li>{{ name }} <a class="btn btn-xs btn-info" href="page/{{ tpl }}">anschauen</a> <a class="btn btn-xs btn-primary" href="page/{{ tpl }}?make=build">Export</a> <a class="btn btn-xs btn-success" href="responsive/index.html?template={{ tpl }}">Responsive</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}

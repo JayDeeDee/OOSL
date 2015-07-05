@@ -10,8 +10,11 @@ urlpatterns = patterns('core',
     url(r'^index_help.html$', TemplateView.as_view(template_name='index_help.html')),
 
     url(r'^page/type_(?P<number>\d+[a-z]*).html', 'views.page'),
+    url(r'^responsive/type_(?P<number>\d+[a-z]*).html', 'views.detail_responsive'),
 
     url(r'^index_page.html$', 'views.list_pages'),
+
+    url(r'^responsive/index.html$', 'views.detail_responsive'),
     url(r'^page/index.html$', 'views.build_markup_bundle'),
     url(r'^page/$', 'views.page_index'),
 )

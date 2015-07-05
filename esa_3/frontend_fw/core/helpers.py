@@ -12,7 +12,7 @@ import time
 import platform
 from django.template.loader import  render_to_string
 from django.conf import settings
-from core.templatesettings import EXP, PAGE_LIST, PAGE_WORK_LIST, BUILD_PAGE_DIRS, BUILD_PAGE_EXCLUDED, STAT_DIRS, STATUS_MESSAGES
+from core.templatesettings import EXP, TPL, PAG, PAGE_LIST, PAGE_WORK_LIST, BUILD_PAGE_DIRS, BUILD_PAGE_EXCLUDED, STAT_DIRS, STATUS_MESSAGES, IFRAME_LIST
 
 
 def is_win():
@@ -29,6 +29,10 @@ def get_work_list():
     return PAGE_WORK_LIST
 
 
+def get_iframe_list():
+    return IFRAME_LIST
+
+
 def get_timestamp():
     return datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H-%M-%S')
 
@@ -43,38 +47,32 @@ def delete_path_exist(p):
         shutil.rmtree(p)
 
 
-# def bash_command(cmd):
-    # subprocess.Popen(cmd, shell=True, executable='/bin/sh')
-    # my_path = os.path.dirname(os.path.realpath(__file__))
-    # print(my_path)
-    # subprocess.Popen('echo ', shell=True)
-
-
-def test_shell():
-    print 'shell'
-    # bash_command('a="Apples and oranges" && echo "${a/oranges/grapes}"')
-
 def get_message(msg):
     print STATUS_MESSAGES[msg]
     return STATUS_MESSAGES[msg]
 
 
-def fetch_page(template,content='',export_dir=''):
+def fetch_page(template, export_dir=''):
 
     if len(export_dir) <= 1:
-        out = ''.join(["templates",get_timestamp(),])
+        out = ''.join([template,get_timestamp(),])
     else:
         out = export_dir
+    print '################'
+    print out
+    print template
 
-    file_basename = os.path.basename(template)
+    file_original = os.path.join(PAG,template)
+    file_basename = os.path.basename(file_original)
     target_out = os.path.join(EXP,out)
 
     check_path_exist(os.path.join(target_out,"page"))
 
     # render file
     file_name = os.path.join(target_out,"page", file_basename)
+    content = render_to_string(file_original)
     write_markup(content, file_name)
-    fetch_static(target_out)
+    fetch_static(target_out, "framework")
 
 
 def fetch_pages(index='',export_dir=''):

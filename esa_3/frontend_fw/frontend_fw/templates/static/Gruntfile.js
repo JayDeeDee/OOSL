@@ -58,9 +58,12 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '../../../src/<%= pkg.name %>/static/js/body.js' : 'js/fw_body.js',
-                    '../../../src/<%= pkg.name %>/static/js/head.js' : 'js/fw_head.js',
-                    '../../../src/<%= pkg.name %>/static/js/legacy.js' : 'js/fw_legacy.js'
+                    'js/fw_body.min.js' : 'js/fw_body.js',
+                    'js/fw_head.min.js' : 'js/fw_head.js',
+                    'js/fw_legacy.min.js' : 'js/fw_legacy.js',
+                    '../../../src/<%= pkg.name %>/js/fw_body.min.js' : 'js/fw_body.js',
+                    '../../../src/<%= pkg.name %>/js/fw_head.min.js' : 'js/fw_head.js',
+                    '../../../src/<%= pkg.name %>/js/fw_legacy.min.js' : 'js/fw_legacy.js'
                 }
             }
         },
@@ -85,8 +88,10 @@ module.exports = function (grunt) {
                     ieCompat: true
                 },
                 files: {
-                    "../../../src/<%= pkg.name %>/static/css/fw_style.css": "less/fw_style.less",
-                    "../../../src/<%= pkg.name %>/static/css/fw_noscript.css": "less/fw_noscript.less"
+                    "css/fw_style.min.css": "less/fw_style.less",
+                    "css/fw_noscript.min.css": "less/fw_noscript.less",
+                    "../../../src/<%= pkg.name %>/css/fw_style.min.css": "less/fw_style.less",
+                    "../../../src/<%= pkg.name %>/css/fw_noscript.min.css": "less/fw_noscript.less"
                 }
             }
         }
@@ -100,7 +105,7 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('default', ['concat', 'less:dist']);
-    grunt.registerTask('build', ['concat', 'uglify', 'less:build']);
-    grunt.registerTask('watchdev', ['watch']);
+    grunt.registerTask('fwbuild', ['concat', 'uglify', 'less:build']);
+    grunt.registerTask('fwwatch', ['watch']);
 
 };

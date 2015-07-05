@@ -48,8 +48,10 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    '../../src/<%= pkg.name %>/static/js/body.js' : 'js/body.js',
-                    '../../src/<%= pkg.name %>/static/js/head.js' : 'js/head.js'
+                    'js/body.min.js' : 'js/body.js',
+                    'js/head.min.js' : 'js/head.js',
+                    '../../src/<%= pkg.name %>/js/body.min.js' : 'js/body.js',
+                    '../../src/<%= pkg.name %>/js/head.min.js' : 'js/head.js'
                 }
             }
         },
@@ -74,8 +76,10 @@ module.exports = function (grunt) {
                     ieCompat: true
                 },
                 files: {
-                    "../../src/<%= pkg.name %>/static/css/style.css": "less/style.less",
-                    "../../src/<%= pkg.name %>/static/css/noscript.css": "less/noscript.less"
+                    "css/style.min.css": "less/style.less",
+                    "css/noscript.min.css": "less/noscript.less",
+                    "../../src/<%= pkg.name %>/css/style.css": "less/style.less",
+                    "../../src/<%= pkg.name %>/css/noscript.css": "less/noscript.less"
                 }
             }
         }
@@ -89,7 +93,7 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('default', ['concat', 'less:dist']);
-    grunt.registerTask('build', ['concat', 'uglify', 'less:build']);
-    grunt.registerTask('watchdev', ['watch']);
+    grunt.registerTask('projbuild', ['concat', 'uglify', 'less:build']);
+    grunt.registerTask('projwatch', ['watch']);
 
 };

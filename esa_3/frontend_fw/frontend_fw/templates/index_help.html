@@ -1,2 +1,78 @@
 {% extends "_meta/fw_base.html" %}
 {% block nav-screens %}<li class="active"><a><strong>Hilfe</strong></a></li>{% endblock %}
+
+{% block content %}
+
+    {% include "_meta/blocks/fw/intro.html" with introTitle="Hilfe" introText="" introHeader='' %}
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Erstellung von HTML-Vorlagen" %}
+    <p>Für HTML-Vorlagen gelten die folgenden Regeln:</p>
+    <ul>
+        <li><strong>Ablageort:</strong> im Ordner <i>/frontend_fw/frontend_fw/templates/page</i></li>
+        <li><strong>Benamungsschema:</strong>
+            <ul>
+                <li><i>'type_laufendeNummer.html'</i> für Seitentypen</li>
+                <li><i>'type_laufendeNummerSuffixKleinbuchstaben.html'</i> für Variationen oder kontextuell zusammenhängende Vorlagen </li>
+            </ul>
+        </li>
+        <li>
+            <strong>Template Language: </strong> Django Template bietet eine Reihe von <a href="https://docs.djangoproject.com/en/1.8/ref/templates/builtins/">Build-in Tags und Filter</a>
+        </li>
+        <li><strong>Includes:</strong> Snippets werden unter frontend_fw/frontend_fw/templates/_meta/blocks/ abgelegt
+            <ul>
+                <li><i>'proj'</i> Snippets für das Kundenprojekt, es können auch weitere Unterordner angelegt werden</li>
+                <li><i>'fw'</i> Snippets für den Frontend Baukasten</li>
+            </ul>
+        </li>
+    </ul>
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="CSS, Javascript und statische Dateien" %}
+
+    <p>Das Frontend für Baukasten und Kundenprojekt sind streng getrennt, daher gibt es für den Baukasten und das Kundenprojekt auch getrennte static Verzeichnisse:</p>
+    <ul>
+        <li><strong>'\frontend_fw\frontend_fw\templates\static'</strong> für den Baukasten</li>
+        <li><strong>'\frontend_fw\frontend_fw\static'</strong> für das Kundenprojekt</li>
+    </ul>
+    <h3>img und imgfw</h3>
+    <p>Im static Verzeichnis für den Baukasten gibt es zwei verschiedene Ordner für Bilder. Alle Dateien, die unter 'img' werden im Bundle Export erfasst, Bilder in 'fwimg' sind nur für die lokale Entwicklung gedacht.</p>
+    <h3>Grunt</h3>
+    <p>Die Konkatination von JavaScript Modulen und das Kompilieren von LESS-Dateien erfolgt über Grunt </p>
+    <p>In der Grunt Konsole von IntelliJ können die folgenden Alias Tasks verwendet werden:</p>
+    <h4>Baukasten </h4>
+    <ul>
+        <li><strong>default: </strong> Alle Skripte werden konkatiniert, LESS wird kompiliert und konkatiniert.</li>
+        <li><strong>fwbuild: </strong> Alle Skripte werden konkatiniert,minifiziert und 'uglified', LESS wird kompiliert, konkatiniert und minifiziert. Zusätzlich werden die erzeugten Dateien unter 'frontend_fw\src' getrennt nach CSS und JS abgelegt.</li>
+        <li><strong>fwwatch: </strong> Der Default-Task wird automatisch bei jeder Änderung in einer JS oder LESS Datei ausgeführt</li>
+    </ul>
+    <img src="static/imgfw/grunt.png" alt="Screenshot: Grunt Konsole"/>
+    <h4>Kundenprojekt</h4>
+    <ul>
+        <li><strong>default: </strong> Alle Skripte werden konkatiniert, LESS wird kompiliert und konkatiniert.</li>
+        <li><strong>projbuild: </strong> Alle Skripte werden konkatiniert,minifiziert und 'uglified', LESS wird kompiliert, konkatiniert und minifiziert. Zusätzlich werden die erzeugten Dateien unter 'frontend_fw\src' getrennt nach CSS und JS abgelegt.</li>
+        <li><strong>projwatch: </strong> Der Default-Task wird automatisch bei jeder Änderung in einer JS oder LESS Datei ausgeführt</li>
+    </ul>
+    <img src="static/imgfw/grunt2.png" alt="Screenshot: Grunt Konsole"/>
+
+    {% include "_meta/blocks/fw/page_headline2.html" with pageHeadline="Bundle Export von HTML-Vorlagen" %}
+    <h3>Auslösen des Exports</h3>
+    <p>Auf der Vorlagenübersicht befindet sich der Button <button class="btn btn-primary btn-lg">Bundle exportieren»</button></p>
+    <p>Nach Auslösen des Buttons werden automatisch alle konfigurierten HTML-Vorlagen inklusive der statischen Dateien als statischs HTML im Ordner 'frontend_fw\export' abgelegt.</p>
+    <h3>Aufbau des Exports</h3>
+    <p>Jeder Export erhält einen eigenen Ordner 'templates[Zeitstempel des Exports]'</p>
+    <img src="static/imgfw/export.png" alt="Screenshot: Export"/>
+    <p>Die Ordnerstruktur ist die folgende:</p>
+    <ul>
+        <li><strong>framework:</strong> enhält die statischen Dateien des Baukastens (genutzt für die Templateübersichtsseite)</li>
+        <li><strong>page:</strong> enthält die Templateübersichtsseite sowie alle Kundentemplates</li>
+        <li><strong>static:</strong> enthält die statischen Dateien für das Kundenprojekt</li>
+    </ul>
+    <h3>Konfiguration des Exports</h3>
+    <p>Die Konfiguration erfolgt in 'frontend_fw\core\templatesettings.py'</p>
+    <ul>
+        <li><strong>PAGE_LIST:</strong> Aufbau des Indexabschnitts fertige Vorlagen, es können beliebig viele Unterabschnitte angelegt werden.</li>
+        <li><strong>PAGE_WORK_LIST:</strong> Aufbau  des Indexabschnitts Vorlagen in Arbeit, es können beliebig viele Unterabschnitte angelegt werden.</li>
+        <li><strong>BUILD_PAGE_EXCLUDED:</strong>Vorlagen, die nicht exportiert werden sollen</li>
+    </ul>
+    <p>Der Export Prozess erfasst standardmäßig alle im Templateordner 'page' vorhandenen Vorlagen, mittels BUILD_PAGE_EXCLUDED können Ausnahmen definiert werden.</p>
+    <p><strong>Vorsicht!</strong> BUILD_PAGE_EXCLUDED bezieht sich nur auf den Kopierprozess, nicht auf die Templateübersichtsseite</p>
+    <p>Um die Templateübersicht so flexibel wie möglich zu gestalten (Mehrfachnennung einer Vorlage in mehreren Abschnitten, Nichterfassen einer exportierten Vorlage...) wurden die Export und Übersicht entkoppelt.
+    Der Frontendentwickler muss selbst darauf achten, dass in der Übersicht keine in BUILD_PAGE_EXCLUDED aufgeführten Vorlagen verlinkt sind.</p>
+{% endblock %}

@@ -5,19 +5,17 @@ from xml.dom import minidom
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.template.loader import render_to_string
-from core.helpers import get_page_list, get_work_list, fetch_pages, fetch_page, get_message, test_shell
+from core.helpers import get_page_list, get_work_list, fetch_pages, fetch_page, get_message, get_iframe_list
 
 
 def page(request, number):
 
     make = request.GET.get('make','')
-    dir = request.GET.get('dir','')
+    dir_name = request.GET.get('dir','')
     if make != '':
-        content = render_to_string('page/type_%s.html' % number, {
-        }, RequestContext(request))
-        fetch_page(content, dir)
+        template = ''.join(["type_",number,".html",])
+        fetch_page(template, dir_name)
     return render_to_response('page/type_%s.html' % number, {
-
     }, RequestContext(request))
 
 
@@ -36,7 +34,6 @@ def build_markup_bundle(request):
         has_back_button = None
         fetch_pages(content, dir)
         status = get_message('bundle_export')
-        test_shell()
 
     return render_to_response('page/index.html', {
         'page_list': get_page_list(),
@@ -63,8 +60,10 @@ def list_pages(request):
         'work_list': get_work_list()
     }, RequestContext(request))
 
-def list_responsive(request):
-    return render_to_response('index_page.html', {
-        'page_list': get_page_list(),
-        'work_list': get_work_list()
+
+def detail_responsive(request):
+    tpl = request.GET.get('template','')
+    return render_to_response('responsive/index.html', {
+        'i_frame_list': get_iframe_list(),
+        'tpl': tpl
     }, RequestContext(request))

@@ -9,6 +9,51 @@ STATUS_MESSAGES = {
     'page_export': 'Die Seite wurde exportiert'
 }
 
+IFRAME_LIST = {
+    '0': {
+        'id': 'mob1',
+        'tab': 'Mobil hoch',
+        'headline': 'Mobiles Hochformat',
+        'width': '320',
+        'height': '480'
+    },
+    '1': {
+        'id': 'mob2',
+        'tab': 'Mobil quer',
+        'headline': 'Mobiles Querformat',
+        'width': '480',
+        'height': '320'
+    },
+    '2': {
+        'id': 'tab1',
+        'tab': 'Tablet klein hoch',
+        'headline': 'Hochformat für kleine Tablets',
+        'width': '600',
+        'height': '800'
+    },
+    '3': {
+        'id': 'tab2',
+        'tab': 'Tablet klein quer',
+        'headline': 'Querformat für kleine Tablets',
+        'width': '800',
+        'height': '600'
+    },
+    '4': {
+        'id': 'tab3',
+        'tab': 'Tablet groß hoch',
+        'headline': 'Tablethochformat',
+        'width': '768',
+        'height': '1024'
+    },
+    '5': {
+        'id': 'tab14',
+        'tab': 'Tablet groß quer',
+        'headline': 'Tabletquerformat',
+        'width': '1024',
+        'height': '768'
+    }
+}
+
 # page index for templates that are ready
 PAGE_LIST = {
     '0':{
@@ -56,4 +101,6 @@ STAT_DIRS = settings.STATICFILES_DIRS
 
 #django project directory and export directory
 PRO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+TPL = os.path.join(settings.APP_DIR,'templates')
+PAG = os.path.join(TPL,'page')
 EXP = os.path.join(PRO, 'export')
