@@ -1,0 +1,24 @@
+{% extends "_meta/fw_subpage.html" %}
+
+{% block content %}
+    {% include "_meta/blocks/fw/intro.html" with introTitle="angepasste Layouts" introText="Viewports der im Pflichtenheft festgelegten Bildschirmgrößen" introHeader='' %}
+    <p><a class="btn pull-right btn-primary" href="../index_page.html">Zurück</a></p>
+    {% if i_frame_list %}
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        {% for key, f in  i_frame_list.items %}
+            <li><a href="#{{ f.id }}"  data-toggle="tab">{{ f.tab }}</a></li>
+        {% endfor %}
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+        {% for key, f in  i_frame_list.items %}
+            <div class="tab-pane" id="{{ f.id }}">
+                <h2>{{ f.headline }}({{ f.width }}x{{ f.height }})</h2>
+                <iframe src="../page/{{ tpl }}" width="{{ f.width }}" height="{{ f.height }}"  title="{{ f.headline }}"></iframe>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+{% endblock %}
+
