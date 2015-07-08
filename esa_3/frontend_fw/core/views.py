@@ -1,5 +1,5 @@
 # Create your views here.
-from xml.dom import minidom
+# from xml.dom import minidom
 
 # from django.http import HttpResponse
 from django.shortcuts import render_to_response
@@ -10,10 +10,10 @@ from core.helpers import get_page_list, get_work_list, fetch_pages, fetch_page, 
 
 def page(request, number):
 
-    make = request.GET.get('make','')
-    dir_name = request.GET.get('dir','')
+    make = request.GET.get('make', '')
+    dir_name = request.GET.get('dir', '')
     if make != '':
-        template = ''.join(["type_",number,".html",])
+        template = ''.join(["type_", number, ".html", ])
         fetch_page(template, dir_name)
     return render_to_response('page/type_%s.html' % number, {
     }, RequestContext(request))
@@ -21,8 +21,8 @@ def page(request, number):
 
 def build_markup_bundle(request):
 
-    make = request.GET.get('make','')
-    dir = request.GET.get('dir','')
+    make = request.GET.get('make', '')
+    dir_fetch = request.GET.get('dir', '')
     status = None
     has_back_button = "yes"
     if make != '':
@@ -32,7 +32,7 @@ def build_markup_bundle(request):
         }, RequestContext(request))
 
         has_back_button = None
-        fetch_pages(content, dir)
+        fetch_pages(content, dir_fetch)
         status = get_message('bundle_export')
 
     return render_to_response('page/index.html', {
@@ -62,7 +62,7 @@ def list_pages(request):
 
 
 def detail_responsive(request):
-    tpl = request.GET.get('template','')
+    tpl = request.GET.get('template', '')
     return render_to_response('responsive/index.html', {
         'i_frame_list': get_iframe_list(),
         'tpl': tpl

@@ -56,32 +56,32 @@ IFRAME_LIST = {
 
 # page index for templates that are ready
 PAGE_LIST = {
-    '0':{
+    '0': {
         'headline': "Seitentypen",
         'intro': "Das ist ein kurzer erklärender Text zu den aufgeführten Vorlagen",
-        'pages':{
-            'type_0.html':'Startseite mit Slider',
-            'type_1.html':'Standardseite mit Introtext '
+        'pages': {
+            'type_0.html': 'Startseite mit Slider',
+            'type_1.html': 'Standardseite mit Introtext '
         }
     },
-    '1':{
+    '1': {
         'headline': "Inhaltstypen",
         'intro': "Das ist ein kurzer erklärender Text zu den aufgeführten Vorlagen",
-        'pages':{
-            'type_1.html':'Slider, Intro und Teaserblock',
-            'type_2.html':'Buttons und Links',
-            'type_4.html':'Panels'
+        'pages': {
+            'type_1.html': 'Slider, Intro und Teaserblock',
+            'type_2.html': 'Buttons und Links',
+            'type_4.html': 'Panels'
         }
     }
 }
 
 # page index for templates that are in work
 PAGE_WORK_LIST = {
-    '0':{
+    '0': {
         'headline': "Inhaltlicher Abschnitt 1",
         'intro': "Das ist ein kurzer erklärender Text zu den aufgeführten Vorlagen",
-        'pages':{
-            'type_3.html':'Buttons und Links - Alternative Landing Page',
+        'pages': {
+            'type_3.html': 'Buttons und Links - Alternative Landing Page',
         }
     },
 }
@@ -101,6 +101,6 @@ STAT_DIRS = settings.STATICFILES_DIRS
 
 #django project directory and export directory
 PRO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
-TPL = os.path.join(settings.APP_DIR,'templates')
-PAG = os.path.join(TPL,'page')
+TPL = os.path.join(settings.APP_DIR, 'templates')
+PAG = os.path.join(TPL, 'page')
 EXP = os.path.join(PRO, 'export')

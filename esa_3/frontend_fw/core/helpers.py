@@ -10,7 +10,8 @@ import datetime
 import shutil
 import time
 import platform
-from django.template.loader import  render_to_string
+from collections import OrderedDict as ODict
+from django.template.loader import render_to_string
 from django.conf import settings
 from core.templatesettings import EXP, TPL, PAG, PAGE_LIST, PAGE_WORK_LIST, BUILD_PAGE_DIRS, BUILD_PAGE_EXCLUDED, STAT_DIRS, STATUS_MESSAGES, IFRAME_LIST
 
@@ -22,11 +23,11 @@ def is_win():
 
 
 def get_page_list():
-    return PAGE_LIST
+    return ODict(sorted(PAGE_LIST.items(), key=lambda t: t[0]))
 
 
 def get_work_list():
-    return PAGE_WORK_LIST
+    return ODict(sorted(PAGE_WORK_LIST.items(), key=lambda t: t[0]))
 
 
 def get_iframe_list():
@@ -95,11 +96,11 @@ def fetch_pages(index='',export_dir=''):
         # index file
         if file_basename == "index.html":
             if len(index) > 1:
-                file_name = os.path.join(target_out,"page", file_basename)
+                file_name = os.path.join(target_out, "page", file_basename)
                 content = index
                 write_markup(content, file_name)
         else:
-            file_name = os.path.join(target_out,"page", file_basename)
+            file_name = os.path.join(target_out, "page", file_basename)
             content = render_to_string(f)
             write_markup(content, file_name)
     fetch_static(target_out)
